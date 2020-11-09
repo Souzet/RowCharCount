@@ -19,23 +19,23 @@ namespace RowCharCount
             using (StreamReader file = new StreamReader(fileName))
             {
                 int counter = 0;
-                //int charnum = 0;
-                //int wordnum = 0;
+                int charnum = 0;
+                int wordnum = 0;
                 string ln;
 
                 while ((ln = file.ReadLine()) != null)
                 {
-                    Console.WriteLine(ln);
+                    //Console.WriteLine(ln);
                     counter++;
-                    //charnum = charnum + ln.Length; // Fixa radslutstecken...
-                    //var punctuation = ln.Where(Char.IsPunctuation).Distinct().ToArray();
-                    //var words = ln.Split().Select(x => x.Trim(punctuation));
-                    //wordnum = wordnum + words.Count();
+                    charnum = charnum + ln.Length; // Fixa radslutstecken...
+                    var punctuation = ln.Where(Char.IsPunctuation).Distinct().ToArray();
+                    var words = ln.Split().Select(x => x.Trim(punctuation));
+                    wordnum = wordnum + words.Count();
                 }
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
-                //Console.WriteLine($"File has {wordnum} words.");
-                //Console.WriteLine($"File has {charnum} chars.");
+                Console.WriteLine($"File has {wordnum} words.");
+                Console.WriteLine($"File has {charnum} chars.");
 
             }
         }
